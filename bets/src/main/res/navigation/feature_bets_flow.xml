@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/feature_bets_flow"
+    app:startDestination="@+id/betsListFragment">
+
+    <fragment
+        android:id="@+id/betsListFragment"
+        android:name="dev.nst.bets.presentation.ui.fragment.BetsListFragment"
+        android:label="BetsListFragment">
+        <action
+            android:id="@+id/action_betsListFragment_to_betsResultsFragment"
+            app:destination="@id/betsResultsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/betsResultsFragment"
+        android:name="dev.nst.bets.presentation.ui.fragment.BetsResultsFragment"
+        android:label="BetsResultsFragment" />
+
+</navigation>

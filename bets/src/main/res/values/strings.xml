@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="bets_get_results">Get results</string>
+    <string name="long_divider">—</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+    <string name="bets_enter_bets">Please, enter your bets</string>
+    <string name="bets_reset">Reset</string>
+    <string name="bets_choose_bet">You need to make bet to continue</string>
+
+</resources>

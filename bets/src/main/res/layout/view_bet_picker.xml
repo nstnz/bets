@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingVertical="@dimen/padding_4"
+    tools:parentTag="android.widget.LinearLayout">
+
+    <TextView
+        android:id="@+id/teamTitleTextView"
+        style="@style/TextStyle.Default"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:maxLines="1"
+        tools:text="Team 1d kgjldfj gldkfjglkdfjglkdfjglkdf jgkldfjgdlkf gdf" />
+
+    <TextView
+        android:id="@+id/minusButton"
+        style="@style/ButtonStyle.Secondary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/padding_8"
+        android:text="@string/minus" />
+
+    <TextView
+        android:id="@+id/betTextView"
+        style="@style/TextStyle.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="0" />
+
+    <TextView
+        android:id="@+id/plusButton"
+        style="@style/ButtonStyle.Secondary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/padding_8"
+        android:text="@string/plus" />
+
+</merge>

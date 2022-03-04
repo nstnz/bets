@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="?selectableItemBackground"
+    android:paddingTop="@dimen/padding_16">
+
+    <TextView
+        android:id="@+id/sideOneTitle"
+        style="@style/TextStyle.Default"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/padding_8"
+        app:layout_constraintEnd_toStartOf="@+id/sideOneBet"
+        app:layout_constraintTop_toTopOf="@+id/longDivider"
+        tools:text="Paris" />
+
+    <TextView
+        android:id="@+id/sideOneBet"
+        style="@style/TextStyle.Title"
+        android:layout_width="@dimen/padding_24"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/padding_16"
+        android:background="@drawable/bg_underline"
+        android:gravity="center"
+        app:layout_constraintEnd_toStartOf="@+id/longDivider"
+        app:layout_constraintTop_toTopOf="@+id/longDivider"
+        tools:text="2" />
+
+    <TextView
+        android:id="@+id/longDivider"
+        style="@style/TextStyle.Default"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/long_divider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/sideTwoBet"
+        style="@style/TextStyle.Title"
+        android:layout_width="@dimen/padding_24"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding_16"
+        android:background="@drawable/bg_underline"
+        android:gravity="center"
+        app:layout_constraintStart_toEndOf="@+id/longDivider"
+        app:layout_constraintTop_toTopOf="@+id/longDivider"
+        tools:text="2" />
+
+    <TextView
+        android:id="@+id/sideTwoTitle"
+        style="@style/TextStyle.Default"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding_8"
+        app:layout_constraintStart_toEndOf="@+id/sideTwoBet"
+        app:layout_constraintTop_toTopOf="@+id/longDivider"
+        tools:text="Paris" />
+
+    <TextView
+        android:id="@+id/realScore"
+        style="@style/TextStyle.Secondary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_8"
+        android:visibility="gone"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/longDivider"
+        tools:text="2 - 45" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/padding_16"
+        android:background="@color/divider_text_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/realScore" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
