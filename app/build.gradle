@@ -1,0 +1,86 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
+tasks.withType(org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompile).configureEach { task ->
+    task.kotlinOptions {
+        jvmTarget = "11"
+    }
+}
+android {
+    compileSdk ANDROID_COMPILE_SDK_VERSION
+
+    defaultConfig {
+        applicationId "dev.nst.app"
+        minSdk ANDROID_MIN_SDK_VERSION
+        targetSdk ANDROID_COMPILE_SDK_VERSION
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility SOURCE_COMPATIBILITY_VERSION
+        targetCompatibility TARGET_COMPATIBILITY_VERSION
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    dataBinding {
+        enabled true
+    }
+}
+
+dependencies {
+
+    implementation libraries.coroutinesCore
+    implementation libraries.coroutinesAndroid
+    implementation libraries.androidxCore
+    implementation libraries.androidxAppCompat
+    implementation libraries.androidLifecycleScope
+    implementation libraries.androidViewModelScope
+    implementation libraries.googleMaterial
+    implementation libraries.androidxNavigationFragmentKtx
+    implementation libraries.androidxNavigationUiKtx
+    implementation libraries.androidxAnnotations
+    implementation libraries.androidxFragment
+
+    implementation libraries.dagger
+    kapt libraries.daggerKapt
+    implementation libraries.hilt
+    kapt libraries.hiltKapt
+    implementation libraries.room
+    kapt libraries.roomCompiler
+
+    implementation libraries.retrofit
+    implementation libraries.retrofitConverterGson
+    implementation libraries.okHttp
+    implementation libraries.okHttpLoggingInterceptor
+    implementation libraries.timber
+    implementation libraries.gson
+
+    implementation project(':navigation')
+    implementation project(':core')
+    implementation project(':bets')
+}
+
+repositories {
+    mavenCentral()
+    google()
+    gradlePluginPortal()
+}
