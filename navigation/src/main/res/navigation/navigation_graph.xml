@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/app_flow">
+
+    <include app:graph="@navigation/app_flow" />
+    <include app:graph="@navigation/feature_bets_flow" />
+
+    <action
+        android:id="@+id/action_app_flow"
+        app:destination="@+id/app_flow"
+        app:popUpTo="@+id/navigation_graph" />
+
+    <action
+        android:id="@+id/action_bets_flow"
+        app:destination="@+id/feature_bets_flow"
+        app:popUpTo="@+id/navigation_graph" />
+
+</navigation>
