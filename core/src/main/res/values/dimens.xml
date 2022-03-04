@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="large_title_text_size">36sp</dimen>
+    <dimen name="large_title_line_spacing">6sp</dimen>
+
+    <dimen name="default_text_size">14sp</dimen>
+    <dimen name="body_text_size">15sp</dimen>
+    <dimen name="body_line_spacing">5sp</dimen>
+
+    <dimen name="padding_4">4dp</dimen>
+    <dimen name="padding_8">8dp</dimen>
+    <dimen name="padding_middle">12dp</dimen>
+    <dimen name="padding_16">16dp</dimen>
+    <dimen name="padding_24">24dp</dimen>
+    <dimen name="padding_28">28dp</dimen>
+    <dimen name="padding_32">32dp</dimen>
+    <dimen name="padding_48">48dp</dimen>
+    <dimen name="padding_64">64dp</dimen>
+
+    <dimen name="logo_size">120dp</dimen>
+    <dimen name="dialog_width">280dp</dimen>
+
+</resources>

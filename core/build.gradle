@@ -1,0 +1,39 @@
+apply from: "$rootProject.projectDir/module.gradle"
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+
+    implementation libraries.coroutinesCore
+    implementation libraries.coroutinesAndroid
+    implementation libraries.androidxCore
+    implementation libraries.androidxAppCompat
+    implementation libraries.androidLifecycleScope
+    implementation libraries.androidViewModelScope
+    implementation libraries.googleMaterial
+    implementation libraries.androidxNavigationFragmentKtx
+    implementation libraries.androidxNavigationUiKtx
+    implementation libraries.androidxAnnotations
+    implementation libraries.androidxFragment
+
+    implementation libraries.dagger
+    kapt libraries.daggerKapt
+    implementation libraries.hilt
+    kapt libraries.hiltKapt
+    implementation libraries.room
+    annotationProcessor libraries.roomCompiler
+
+    implementation libraries.retrofit
+    implementation libraries.retrofitConverterGson
+    implementation libraries.okHttp
+    implementation libraries.okHttpLoggingInterceptor
+    implementation libraries.timber
+    implementation libraries.gson
+
+    implementation project(':navigation')
+}
+
+repositories {
+    mavenCentral()
+    google()
+    gradlePluginPortal()
+}
