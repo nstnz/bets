@@ -29,7 +29,21 @@
 
     </androidx.appcompat.widget.Toolbar>
 
+    <FrameLayout
+        android:id="@+id/progressView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:layout_width="@dimen/padding_48"
+            android:layout_height="@dimen/padding_48"
+            android:layout_gravity="center" />
+
+    </FrameLayout>
+
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/resultsRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"

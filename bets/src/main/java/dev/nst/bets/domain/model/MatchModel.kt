@@ -6,6 +6,6 @@ data class MatchModel(
     val team2: String,
     var team1Bet: Int? = null,
     var team2Bet: Int? = null,
-    val team1Points: Int? = null,
-    val team2Points: Int? = null,
+    var team1Points: Int? = null,
+    var team2Points: Int? = null,
 )

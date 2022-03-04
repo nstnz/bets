@@ -3,6 +3,7 @@ package dev.nst.app.presentation.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dev.nst.bets.data.prefs.BetsPreferences
 import dev.nst.navigation.NavigationFlow
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.BufferOverflow.DROP_OLDEST
@@ -13,6 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SplashViewModel @Inject constructor(
+    private val prefs: BetsPreferences
 ) : ViewModel() {
 
     private val _navigateFlow = MutableSharedFlow<NavigationFlow>(1, 1, DROP_OLDEST)
@@ -20,7 +22,7 @@ class SplashViewModel @Inject constructor(
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
-            _navigateFlow.emit(NavigationFlow.BetsFlow)
+            _navigateFlow.emit(NavigationFlow.BetsFlow(prefs.getLastScreen()))
         }
     }
 }

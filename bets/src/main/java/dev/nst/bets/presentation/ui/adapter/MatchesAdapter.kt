@@ -12,7 +12,7 @@ import dev.nst.bets.presentation.ui.adapter.MatchesAdapter.MatchesViewHolder
 import kotlinx.android.extensions.LayoutContainer
 
 class MatchesAdapter(
-    private val clickOnMatch: (MatchModel) -> Unit
+    private val clickOnMatch: (MatchModel) -> Unit = {}
 ) : RecyclerView.Adapter<MatchesViewHolder>() {
 
     var items = listOf<MatchModel>()
@@ -50,6 +50,7 @@ class MatchesAdapter(
                 sideTwoBet.text = item.team2Bet?.toString().orEmpty()
 
                 if (item.team1Points != null && item.team2Points != null) {
+                    itemView.isEnabled = false
                     realScore.visibility = View.VISIBLE
                     realScore.setTextColor(
                         ContextCompat.getColor(
@@ -57,6 +58,7 @@ class MatchesAdapter(
                             if (item.team1Bet == item.team1Points && item.team2Bet == item.team2Points) R.color.accent_color else R.color.secondary_text_color
                         )
                     )
+                    realScore.text = "${item.team1Points} — ${item.team2Points}"
                 } else {
                     realScore.visibility = View.GONE
                 }

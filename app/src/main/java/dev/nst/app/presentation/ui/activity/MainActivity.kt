@@ -1,10 +1,12 @@
 package dev.nst.app.presentation.ui.activity
 
 import android.os.Bundle
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import dagger.hilt.android.AndroidEntryPoint
 import dev.nst.app.R
 import dev.nst.app.R.layout
+import dev.nst.bets.presentation.viewmodel.BETS_RESULTS_SCREEN_NAME
 import dev.nst.core.presentation.ui.activity.BaseActivity
 import dev.nst.navigation.NavigationFlow
 import dev.nst.navigation.NavigationGraphDirections
@@ -23,7 +25,13 @@ class MainActivity : BaseActivity() {
 
     override fun navigateToFlow(flow: NavigationFlow) {
         return when (flow) {
-            is NavigationFlow.BetsFlow -> navigator.navigate(NavigationGraphDirections.actionBetsFlow())
+            is NavigationFlow.BetsFlow -> {
+                //todo choose start destination
+                when (flow.startScreen) {
+                    BETS_RESULTS_SCREEN_NAME -> navigator.navigate(NavigationGraphDirections.actionBetsFlow())
+                    else                     -> navigator.navigate(NavigationGraphDirections.actionBetsFlow())
+                }
+            }
             else                       -> navigator.navigate(NavigationGraphDirections.actionAppFlow())
         }
     }

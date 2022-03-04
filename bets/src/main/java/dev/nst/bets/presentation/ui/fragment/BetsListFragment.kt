@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.migration.OptionalInject
 import dev.nst.bets.R
@@ -51,6 +52,11 @@ class BetsListFragment : BaseFragment<FragmentBetsListBinding>(FragmentBetsListB
                 }
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.updateLastOpenedScreen()
     }
 
     private fun setLoadingState(visible: Boolean) {

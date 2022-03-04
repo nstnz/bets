@@ -17,6 +17,15 @@
     <fragment
         android:id="@+id/betsResultsFragment"
         android:name="dev.nst.bets.presentation.ui.fragment.BetsResultsFragment"
-        android:label="BetsResultsFragment" />
+        android:label="BetsResultsFragment">
+
+        <action
+            android:id="@+id/action_betsResultsFragment_to_betsListFragment"
+            app:destination="@id/betsListFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/feature_bets_flow"
+            app:popUpToInclusive="true" />
+
+    </fragment>
 
 </navigation>

@@ -9,5 +9,5 @@ sealed class NavigationFlow(val deepLinkRoot: String) {
 
     object AppFlow : NavigationFlow(APP)
 
-    object BetsFlow : NavigationFlow(BETS)
+    class BetsFlow(val startScreen: String) : NavigationFlow(BETS)
 }

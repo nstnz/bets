@@ -7,7 +7,10 @@ import dev.nst.bets.domain.mapper.MatchesMapper
 import dev.nst.bets.domain.model.MatchModel
 import dev.nst.core.data.network.RetrofitProvider
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.mapLatest
+import kotlinx.coroutines.flow.zip
 import javax.inject.Inject
 
 private const val MINUTE = 1000 * 60
@@ -23,7 +26,7 @@ class MatchesRepository @Inject constructor(
 
     val matchesFlow: Flow<List<MatchModel>> = matchesDao.getAllMatches().mapLatest { matchesMapper.mapToDomain(it) }
 
-    suspend fun updateMatches() {
+    suspend fun loadMatches() {
         loadAndSaveMatches()
     }
 
@@ -35,25 +38,24 @@ class MatchesRepository @Inject constructor(
         matchesDao.resetResults()
     }
 
-    suspend fun getResults(): List<MatchModel> {
-        return emptyList()
-        /*
-        val matchesDbList = matchesDao.getAllMatches().orEmpty()
-        val resultsList = api.getResults()
-
-        return matchesMapper.mapToDomain(matchesDbList).onEach { domMatch ->
-            resultsList.matches.firstOrNull { it.id == domMatch.id }?.let {
-                domMatch.team1Points = it.team1Score
-                domMatch.team2Points = it.team2Score
+    suspend fun getResults(): Flow<List<MatchModel>> {
+        return matchesDao.getAllMatches()
+            .zip(flow { emit(api.getResults()) }) { dbModel, resultsList ->
+                return@zip matchesMapper.mapToDomain(dbModel).onEach { domMatch ->
+                    resultsList.matches.firstOrNull { it.id == domMatch.id }?.let {
+                        domMatch.team1Points = it.team1Score
+                        domMatch.team2Points = it.team2Score
+                    }
+                }
             }
-        }*/
     }
 
     private suspend fun loadAndSaveMatches() {
         if (System.currentTimeMillis() - prefs.getLastUpdatedTimestamp() >= MINUTE) {
-            val matchesDbList = matchesMapper.mapToDb(api.getMatches().matches)
-            matchesDbList.forEach {
-                matchesDao.insert(it)
+            flow { emit(api.getMatches()) }.map {
+                matchesMapper.mapToDb(it.matches).forEach {
+                    matchesDao.insert(it)
+                }
             }
         }
     }
