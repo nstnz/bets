@@ -25,7 +25,7 @@ class BetsResultsViewModel @Inject constructor(
     private val _resultsFlow = MutableSharedFlow<List<MatchModel>>(0, 1, DROP_OLDEST)
     val resultsFlow: Flow<List<MatchModel>> get() = _resultsFlow
 
-    init {
+    fun getResults() {
         viewModelScope.launch(Dispatchers.IO) {
             resultsUseCase.getResults().collect {
                 _resultsFlow.emit(it)

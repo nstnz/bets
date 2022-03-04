@@ -39,6 +39,8 @@ class BetsResultsFragment : BaseFragment<FragmentBetsResultsBinding>(FragmentBet
                 adapter.items = it
             }
         }
+
+        viewModel.getResults()
     }
 
     override fun onResume() {
