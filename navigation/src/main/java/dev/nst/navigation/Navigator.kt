@@ -2,6 +2,7 @@ package dev.nst.navigation
 
 import androidx.navigation.NavController
 import androidx.navigation.NavDirections
+import androidx.navigation.NavOptions
 
 class Navigator {
 
