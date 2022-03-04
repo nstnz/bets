@@ -1,0 +1,22 @@
+buildscript {
+    apply from: 'dependencies.gradle'
+    ext.kotlin_version = '1.5.31'
+
+    repositories {
+        google()
+        gradlePluginPortal()
+        mavenCentral()
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath appPlugins.gradlePlugin
+        classpath appPlugins.kotlinPlugin
+        classpath appPlugins.hiltPlugin
+        classpath appPlugins.navigationPlugin
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

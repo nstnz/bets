@@ -1,0 +1,74 @@
+def GRADLE_VERSION = '7.0.3'
+def KOTLIN_VERSION = '1.5.31'
+
+def coroutinesCore = '1.4.2'
+def lifecycle = '2.2.0'
+def androidxCore = '1.3.2'
+def androidxAppCompat = '1.2.0'
+def androidxAnnotations = '1.1.0'
+def androidxFragment = '1.3.0'
+def googleMaterial = '1.3.0-alpha02'
+def dagger = '2.39.1'
+def retrofit = '2.9.0'
+def okHttp = '4.8.0'
+def room = '2.2.6'
+def navigation = '2.3.3'
+def timber = '4.7.1'
+def gson = '2.8.6'
+
+def junit = '4.13.2'
+def androidxJUnit = '1.1.2'
+def androidxEspressoCore = '3.3.0'
+
+ext {
+    ANDROID_COMPILE_SDK_VERSION = 30
+    ANDROID_MIN_SDK_VERSION = 24
+    ANDROID_TARGET_SDK_VERSION = 28
+    SOURCE_COMPATIBILITY_VERSION = JavaVersion.VERSION_11
+    TARGET_COMPATIBILITY_VERSION = JavaVersion.VERSION_11
+
+    appPlugins = [
+        gradlePlugin            : "com.android.tools.build:gradle:$GRADLE_VERSION",
+        kotlinPlugin            : "org.jetbrains.kotlin:kotlin-gradle-plugin:$KOTLIN_VERSION",
+        hiltPlugin              : "com.google.dagger:hilt-android-gradle-plugin:$dagger",
+        navigationPlugin        : "androidx.navigation:navigation-safe-args-gradle-plugin:$navigation",
+    ]
+
+    libraries = [
+        coroutinesCore               : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesCore",
+        coroutinesAndroid            : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesCore",
+
+        androidxCore                 : "androidx.core:core-ktx:$androidxCore",
+        androidxAppCompat            : "androidx.appcompat:appcompat:$androidxAppCompat",
+        androidLifecycleScope        : "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle",
+        androidViewModelScope        : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle",
+        googleMaterial               : "com.google.android.material:material:$googleMaterial",
+        androidxNavigationFragmentKtx: "androidx.navigation:navigation-fragment-ktx:$navigation",
+        androidxNavigationUiKtx      : "androidx.navigation:navigation-ui-ktx:$navigation",
+        androidxAnnotations          : "androidx.annotation:annotation:$androidxAnnotations",
+        androidxFragment             : "androidx.fragment:fragment-ktx:$androidxFragment",
+
+        dagger                       : "com.google.dagger:dagger:$dagger",
+        daggerKapt                   : "com.google.dagger:dagger-compiler:$dagger",
+        hilt                         : "com.google.dagger:hilt-android:$dagger",
+        hiltKapt                     : "com.google.dagger:hilt-compiler:$dagger",
+
+        retrofit                     : "com.squareup.retrofit2:retrofit:$retrofit",
+        retrofitConverterGson        : "com.squareup.retrofit2:converter-gson:$retrofit",
+
+        okHttp                       : "com.squareup.okhttp3:okhttp:$okHttp",
+        okHttpLoggingInterceptor     : "com.squareup.okhttp3:logging-interceptor:$okHttp",
+
+        timber                       : "com.jakewharton.timber:timber:$timber",
+        gson                         : "com.google.code.gson:gson:$gson",
+
+        room                         : "androidx.room:room-ktx:$room",
+        roomCompiler                 : "androidx.room:room-compiler:$room",
+    ]
+
+    tests = [
+        junit               : "junit:junit:$junit",
+        androidxJUnit       : "androidx.test.ext:junit:$androidxJUnit",
+        androidxEspressoCore: "androidx.test.espresso:espresso-core:$androidxEspressoCore"
+    ]
+}
