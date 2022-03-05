@@ -16,4 +16,9 @@ A mobile app for betting on football matches. There are 2 views in the app: one 
 
 > BTW, I don't know why there are some circles on my screenshots :) The app doesn't have them.
 
-
+# libraries
+- Room
+- Dagger Hilt
+- Retrofit / Gson
+- Kotlin coroutines for multithreading
+- Android architecture components
