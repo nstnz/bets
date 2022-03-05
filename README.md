@@ -7,6 +7,7 @@ A mobile app for betting on football matches. There are 2 views in the app: one 
 - app has multi-module structure: navigation module for navigation, core module for base classes and methods, bets module as feature module and app module as main application.
 - navigation architecture has opportunity to easily add new modules
 - app won't make HTTP requests if it less than minute from the last request, it will load data from database instead
+- use Reset button to start over
 
 
 | Bets view  | Adding bets | Results view |
