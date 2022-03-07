@@ -8,7 +8,6 @@ import dev.nst.bets.domain.model.MatchModel
 import dev.nst.core.data.network.RetrofitProvider
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.zip
 import javax.inject.Inject
@@ -52,11 +51,10 @@ class MatchesRepository @Inject constructor(
 
     private suspend fun loadAndSaveMatches() {
         if (System.currentTimeMillis() - prefs.getLastUpdatedTimestamp() >= MINUTE) {
-            flow { emit(api.getMatches()) }.map {
-                matchesMapper.mapToDb(it.matches).forEach {
-                    matchesDao.insert(it)
-                }
+            api.getMatches().matches.map {
+                matchesDao.insert(matchesMapper.mapToDb(it))
             }
+            prefs.setLastUpdatedTimestamp(System.currentTimeMillis())
         }
     }
 }
