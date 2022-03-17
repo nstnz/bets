@@ -52,7 +52,12 @@ class MatchesRepository @Inject constructor(
     private suspend fun loadAndSaveMatches() {
         if (System.currentTimeMillis() - prefs.getLastUpdatedTimestamp() >= MINUTE) {
             api.getMatches().matches.map {
-                matchesDao.insert(matchesMapper.mapToDb(it))
+                val dbModel = matchesMapper.mapToDb(it)
+                if (matchesDao.getItemId(dbModel.id) != null) {
+                    matchesDao.updateTeam(dbModel.id, dbModel.team1, dbModel.team2)
+                } else {
+                    matchesDao.insert(dbModel)
+                }
             }
             prefs.setLastUpdatedTimestamp(System.currentTimeMillis())
         }
